@@ -1,0 +1,91 @@
+{% extends 'main/main.html' %}
+
+{% block title %}customer{% endblock title %}
+
+
+{% block content %}
+ 
+<br>
+<div class="row ">
+    <div class=" col-md">
+        <div class="card card-body" id="">
+            <h5 class="card-title">Customer</h5>
+            <a href="#" class="btn btn-outline-success btn-sm btn-block" role="button">Update Customer</a>
+            <br>
+            <a href="{% url 'customer_create_order' customers.id %}" class="btn btn-primary btn-sm btn-block" role="button">Create Order</a>
+        </div>
+    </div>
+    <div class=" col-md">
+        <div class="card card-body" id="">
+            <h5 class="card-title">Contact Information</h5>
+            <hr>
+            <p class="">Email :  {{customers.email}}</p>
+            <p class="">Phone :  {{customers.phone}}</p>
+        </div>
+    </div>
+    <div class=" col-md">
+        <div class="card text-center" id="">
+            <div class="card-header">
+                <h5 class="card-title">Total Order:</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" style="padding:10px">{{total_order}}</h5>
+            </div>   
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row  text-center">
+    <div class=" col-md">
+        <div class="card text-center " id="">
+            <div class="card-header">
+                <form action="" method= "GET">
+                    {{myfilter.form}}
+                    <button class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row  text-center">
+    <div class=" col-md">
+        <div class="card text-center " id="">
+            <div class="card-header">
+                <h5 class="card-title">Product</h5>
+            </div>
+            <div class="card-body">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Date Orderd</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Removed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{order.product}}</td>
+                            <td>{{order.product.category}}</td>
+                            <td>{{order.date_created}}</td>
+                            <td>{{order.status}}</td>
+                            <td><a href="{% url 'update_form' order.id %}" class="btn btn-info btn-sm btn-block" role="button">Update</a></td>
+                            <td><a href="{% url 'remove_form' order.id %}" class="btn btn-danger btn-sm btn-block" role="button">Remove</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>  
+
+{% endblock content %}

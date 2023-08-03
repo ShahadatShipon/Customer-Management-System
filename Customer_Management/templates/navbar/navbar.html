@@ -1,0 +1,37 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <img src="{% static 'images/logo.png' %}" alt="logo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        {% if request.user.is_staff %}
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'dashboard' %}">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'product' %}">Product</a>
+              </li>
+          </ul>
+        {% else %}
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_settings' %}">Settings</a>
+          </li>
+      </ul>
+          
+        {% endif %}  
+      </div>
+      <div class=" nav navbar-nav navbar-right" style="margin-right:15px;">
+        <h5 style="color:white;margin-right:10px;margin-top:7px;">Hello , {{request.user}}</h5>
+
+        <ul class="nav navbar-nav navbar-right">            
+          <li style="align-content:center">
+              <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a> 
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

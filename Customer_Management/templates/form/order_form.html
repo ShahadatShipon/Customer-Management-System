@@ -1,0 +1,39 @@
+{% extends 'main/main.html' %}
+
+{% block content %}
+<br>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="row  text-center">
+        <h5 class="card-title">Create New Order :</h5>
+        <hr>
+        {% for f in form %}
+        <div class=" col-md-4">
+            <div class="card text-center " id="">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <table class="table ">
+                        
+                            <thead>                               
+                                <tr>
+                                    <th class="card-title">{{f.label_tag}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{f}}</td>
+                                </tr>
+                            </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <button class="btn btn-info">Create</button>
+    </div>
+</form>
+
+{% endblock content %}
+

@@ -1,0 +1,16 @@
+body{
+    background-color: rgba(240, 255, 255, 0.911);
+}
+#total-order{
+    background-color: #4cb4c7;
+}
+#order-deliver{
+    background-color: #7abecc;
+}
+#order-pending{
+    background-color: #7CD1C0;
+}
+label{
+    letter-spacing: 10px;
+    line-height: 10;
+}

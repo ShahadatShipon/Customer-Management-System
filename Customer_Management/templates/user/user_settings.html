@@ -1,0 +1,73 @@
+{% extends 'main/main.html' %}
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+
+<style>
+    .profile_pic{
+        height:250px;
+        border-radius:50%;
+        padding:0;
+    }
+    label{
+        color:teal;
+        font-weight:1000;
+        letter-spacing: 3px;
+    }
+</style>
+
+<div class="row  text-center">
+    <div class=" col-md-4">
+        <div class="card text-center " id="">
+            <div class="card-header">
+                <h5 class="card-title"><a class="btn btn-info btn-sm btn-block" href="{% url 'dashboard' %}">Back to profile</a></h5>
+            </div>
+            <div class="card-body">
+                <h5>Account settings</h5>
+                <hr>
+                <img class="img-thumbnail rounded profile_pic" src="{{request.user.customer.profile_pic.url}}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class=" col-md-4">
+        <div class="card text-center " id="">
+            <div class="card card-body">
+                <form action="" method="POST">{% csrf_token %}
+                    <div class="mb-2">
+                        <label for="exampleFormControlInput1" class="form-label ">User</label><br>
+                        <!--<input type="Username" class="form-control" id="exampleFormControlInput1" placeholder="Username">-->
+                        {{form.user}}
+                    </div>
+                    <div class="mb-2">
+                        <label for="exampleFormControlInput1" class="form-label">Name</label>
+                        <!--<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">-->
+                        {{form.name}}
+                    </div>
+                    <div class="mb-2">
+                        <label for="inputPassword" class="form-label">Phone</label>
+                        <!--<input type="password" class="form-control" id="inputPassword" placeholder="Password">-->
+                        {{form.phone}}
+                    </div>
+                    <div class="mb-2">
+                        <label for="inputPassword" class="form-label">Email</label>
+                        <!--<input type="password" class="form-control" id="inputPassword" placeholder="Re-enter Password">-->
+                        {{form.email}}
+                    </div>
+                    <div class="mb-2">
+                        <label for="inputPassword" class="form-label">Profile Picture</label>
+                        <!--<input type="password" class="form-control" id="inputPassword" placeholder="Re-enter Password">-->
+                        {{form.profile_pic}}
+                    </div>
+                    <input type="submit" name="Update Information" class="btn btn-info btn-sm btn-block"></input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

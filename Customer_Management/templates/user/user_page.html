@@ -1,0 +1,78 @@
+{% extends 'main/main.html' %}
+
+{% block content %}
+
+
+
+<br>
+<div class="row  text-center">
+    <div class=" col-md-4">
+        <div class="card text-center " id="total-order">
+            <div class="card-header">
+                <h5 class="card-title">Total Order:</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{total_order}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class=" col-md-4">
+        <div class="card text-center" id="order-deliver">
+            <div class="card-header">
+                <h5 class="card-title">Order Delivered:</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{delivered}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class=" col-md-4">
+        <div class="card text-center" id="order-pending">
+            <div class="card-header">
+                <h5 class="card-title">Order Pending:</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{pending}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row  text-center">
+    <div class=" col-md">
+        <div class="card text-center " id="">
+            <div class="card-header">
+                <h5 class="card-title">Product</h5>
+            </div>
+            <div class="card-body">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Date Orderd</th>
+                        <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{order.product}}</td>
+                            <td>{{order.product.category}}</td>
+                            <td>{{order.date_created}}</td>
+                            <td>{{order.status}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+
+
